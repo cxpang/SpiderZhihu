@@ -6,7 +6,7 @@ type User struct {
 
 }
 func main()  {
-	fmt.Println("准备爬取知乎")
+	fmt.Println("开始爬取知乎")
 	if Loginzhihu(){
 		gethome()
 	}else {

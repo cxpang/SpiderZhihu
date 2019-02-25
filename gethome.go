@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"regexp"
 )
 
 func gethome()  {
@@ -27,6 +28,10 @@ func buildheader()  {
 	}
 	defer resp.Body.Close()
 	body, _ := ioutil.ReadAll(resp.Body)
-	fmt.Println(string(body))
+	//找到所有的json格式文件
+	ptnContentRough := regexp.MustCompile(`{"initialState":(.*)}`)
+	match := ptnContentRough.FindStringSubmatch(string(body))
+
+	fmt.Println(match)
 
 }
